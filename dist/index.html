@@ -9,23 +9,345 @@
 </head>
 
 <body class="h-full p-0 m-0">
-    <div class="body-container bg-indigo-200 min-h-screen">
+    <div class="body-container bg-indigo-200 min-h-screen md:flex md:justify-center md:items-center">
         <div class="mobile-header relative md:hidden">
             <div class="mb-hdr-bckgrnd bg-[url('../src/assets/images/bg-sidebar-mobile.svg')] 
                 bg-no-repeat bg-cover bg-center h-40 overflow-y-hidden overflow-x-auto">
             </div>
             <div class="stepper absolute flex top-4 left-1/2 -translate-x-1/2 gap-4">
-                <div class="stepper__item_circle text-center text-white h-8 w-8 rounded-full leading-7 border-white border-2 bg-transparent">1</div>
-                <div class="stepper__item_circle text-center text-white h-8 w-8 rounded-full leading-7 border-white border-2 bg-transparent">2</div>
-                <div class="stepper__item_circle text-center text-white h-8 w-8 rounded-full leading-7 border-white border-2 bg-transparent">3</div>
-                <div class="stepper__item_circle text-center text-white h-8 w-8 rounded-full leading-7 border-white border-2 bg-transparent">4</div>
-                <div class="stepper__item_circle text-center text-white h-8 w-8 rounded-full leading-7 border-white border-2 bg-transparent hidden">5</div>
+                <div
+                    class="stepper__item_circle text-center text-white h-8 w-8 rounded-full leading-7 border-white border-2 bg-transparent">
+                    1</div>
+                <div
+                    class="stepper__item_circle text-center text-white h-8 w-8 rounded-full leading-7 border-white border-2 bg-transparent">
+                    2</div>
+                <div
+                    class="stepper__item_circle text-center text-white h-8 w-8 rounded-full leading-7 border-white border-2 bg-transparent">
+                    3</div>
+                <div
+                    class="stepper__item_circle text-center text-white h-8 w-8 rounded-full leading-7 border-white border-2 bg-transparent">
+                    4</div>
+                <div
+                    class="stepper__item_circle text-center text-white h-8 w-8 rounded-full leading-7 border-white border-2 bg-transparent hidden">
+                    5</div>
             </div>
         </div>
 
-        <div class="flex-container"></div>
+        <div
+            class="flex-container flex box-border shadow-lg rounded-lg bg-white w-5/6 md:max-w-4xl mx-auto -translate-y-10 md:translate-y-0 p-6 md:p-0 md:min-w-[800px] z-10">
+            <div
+                class="desktop-sidebar hidden md:block md:w-[30%] bg-cover rounded-lg bg-[url('../src/assets/images/bg-sidebar-desktop.svg')] min-h-96 m-8">
+            </div>
+            <!-- Step-1 next line has hidden @TODO: -->
+            <div class="form relative hidden w-full p-10">
+                <h2 class="text-gray-800 font-bold text-2xl">Personal Info</h2>
+                <p class="text-gray-500 mt-2">Please provide your name, email address, and phone number.</p>
+                <form action="#" class="mt-4 space-y-6">
+                    <div class="flex flex-col gap-2">
+                        <label for="name" class="text-sm font-medium text-gray-700">Name</label>
+                        <input type="text" id="name" placeholder="e.g. Stephen King"
+                            class="w-full h-10 rounded-md shadow-sm " />
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label for="email" class="text-sm font-medium text-gray-700">Email Address</label>
+                        <input type="email" id="email" placeholder="e.g. stephenking@lorem.com"
+                            class="w-full h-10 rounded-md shadow-sm " />
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <div class="flex justify-between items-center">
+                            <label for="phone" class="text-sm font-medium text-gray-700">Phone Number</label>
+                            <p class="text-sm text-red-500 hidden">This field is required</p>
+                        </div>
+                        <input type="tel" id="phone" placeholder="e.g. +123 456 7890"
+                            class="w-full h-10 rounded-md shadow-sm " />
+                    </div>
+                    <div class="bottom-navigations flex justify-between absolute bottom-7 w-11/12">
+                        <button type="submit" class="invisible">Go Back</button>
+                        <button type="submit" class="bg-indigo-950 text-white px-4 py-2 rounded-lg">Next Step</button>
+                    </div>
+                </form>
+            </div>
+            <!-- Step-2 next line has hidden @TODO: -->
+            <div class="form hidden relative w-full p-7">
+                <h2 class="text-gray-800 font-bold text-2xl">Select your plan</h2>
+                <p class="text-gray-500 my-2">You have the option of monthly or yearly billing.</p>
+                <div class="plan-types flex flex-col md:flex-row md:flex-wrap md:justify-between gap-2">
+                    <button class="arcade flex gap-4 p-4 border-slate-100 border-2 focus:border-indigo-300 rounded-lg">
+                        <img src="../src/assets/images/icon-arcade.svg" alt="Arcade image" class="">
+                        <div class="arcade__info flex flex-col justify-around">
+                            <h3 class="text-gray-800 font-bold text-lg">Arcade</h3>
+                            <p class="text-gray-500 mt-2">$9/mo</p>
+                        </div>
+                    </button>
+                    <button
+                        class="advanced flex gap-4 p-4 border-slate-100 border-2 focus:border-indigo-300 rounded-lg">
+                        <img src="../src/assets/images/icon-advanced.svg" alt="Advanced image">
+                        <div class="arcade__info flex flex-col justify-around">
+                            <h3 class="text-gray-800 font-bold text-lg">Advanced</h3>
+                            <p class="text-gray-500 mt-2">$12/mo</p>
+                        </div>
+                    </button>
+                    <button class="arcade flex gap-4 p-4 border-slate-100 border-2 focus:border-indigo-300 rounded-lg">
+                        <img src="../src/assets/images/icon-pro.svg" alt="Pro image">
+                        <div class="arcade__info flex flex-col justify-around">
+                            <h3 class="text-gray-800 font-bold text-lg">Pro</h3>
+                            <p class="text-gray-500 mt-2">$15/mo</p>
+                        </div>
+                    </button>
+                    <!-- Toggle -->
+                    <div class="flex items-center justify-center w-full p-4 bg-slate-200 rounded-xl space-x-4">
+                        <span class="font-semibold">Monthly</span>
+                        <button id="toggle"
+                            class="relative inline-flex items-center cursor-pointer w-16 h-8 bg-indigo-900 rounded-full transition-colors duration-300 ease-in-out">
+                            <span class="sr-only">Toggle Button</span>
+                            <span
+                                class="absolute left-0 inline-block w-8 h-8 bg-white rounded-full shadow-md transition-all duration-300 ease-in-out -scale-[75%]"
+                                id="circle"></span>
+                        </button>
+                        <span>Yearly</span>
+                        <div class="bottom-navigations flex justify-between absolute bottom-7 w-11/12">
+                            <button type="submit" class="invisible">Go Back</button>
+                            <button type="submit" class="bg-indigo-950 text-white px-4 py-2 rounded-lg">Next
+                                Step</button>
+                        </div>
+                    </div>
+                    <!--  -->
+                </div>
+                <div class="bill-type"></div>
+            </div>
+            <!-- Step-3 next line has hidden @TODO: -->
+            <div class="form hidden relative w-full p-7">
+                <h2 class="text-gray-800 font-bold text-2xl">Add-ons</h2>
+                <p class="text-gray-500 my-2">Add-ons improve your gaming experience.</p>
+                <div class="add-on-types flex flex-col md:flex-row md:flex-wrap md:justify-between gap-2">
+                    <div
+                        class="arcade flex gap-4 p-4 border-slate-100 border-2 focus:border-indigo-300 rounded-lg w-full">
+                        <div class=""><input type="checkbox" name="online service" id="online"></div>
+                        <div class="arcade__info flex flex-col justify-around">
+                            <h3 class="text-gray-800 font-bold text-lg">Online service</h3>
+                            <p class="text-gray-500 mt-2">Access to multiplayer games.</p>
+                        </div>
+                        <div class="arcade__info flex flex-col justify-around">
+                            <p class="">+$1/mo</p>
+                        </div>
+                    </div>
+                    <div
+                        class="arcade flex gap-4 p-4 border-slate-100 border-2 focus:border-indigo-300 rounded-lg w-full">
+                        <div class=""><input type="checkbox" name="online service" id="online"></div>
+                        <div class="arcade__info flex flex-col justify-around">
+                            <h3 class="text-gray-800 font-bold text-lg">Larger storage</h3>
+                            <p class="text-gray-500 mt-2">Extra 1TB of cloud storage</p>
+                        </div>
+                        <div class="arcade__info flex flex-col justify-around">
+                            <p class="">+$2/mo</p>
+                        </div>
+                    </div>
+                    <div
+                        class="arcade flex gap-4 p-4 border-slate-100 border-2 focus:border-indigo-300 rounded-lg w-full">
+                        <div class=""><input type="checkbox" name="online service" id="online"></div>
+                        <div class="arcade__info flex flex-col justify-around">
+                            <h3 class="text-gray-800 font-bold text-lg">Customizable profit</h3>
+                            <p class="text-gray-500 mt-2">Custom theme on your profile.</p>
+                        </div>
+                        <div class="arcade__info flex flex-col justify-around">
+                            <p class="">+$3/mo</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bill-type"></div>
+            </div>
+            <!-- Step-4 next line has hidden @TODO: -->
+            <div class="form relative w-full p-7">
+                <h2 class="text-gray-800 font-bold text-2xl">Finishing up</h2>
+                <p class="text-gray-500 my-2">Double check everything looks OK before confirming.</p>
+                <div class="info bg-indigo-200 flex flex-col gap-4 rounded-lg p-4">
+                    <div class="plan-details justify-between flex">
+                        <div>
+                            <div class="detail">Arcade (Monthly)</div>
+                            <a href="#" class="underline border-none">Change</a>
+                        </div>
+                        <div>$90/yr</div>
+                    </div>
+                    <hr>
+                    <div class="addons-details flex justify-between">
+                        <div class="detail">Online service</div>
+                        <div class="detail">+$10/yr</div>
+                    </div>
+                    <div class="larger-details flex justify-between">
+                        <div class="detail">Larger storage</div>
+                        <div class="detail">+$20/yr</div>
+                    </div>
+                </div>
+                <div class="total flex justify-between">
+                    <p>Total [per year]</p>
+                    <p>$120/yr</p>
+                </div>
+            </div>
+        </div>
         <script type="module" src="app.js"></script>
 </body>
 
 </html>
 
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Tailwind Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-200 min-h-screen flex items-center justify-center p-4">
+    <!-- Mobile Section 
+    <div class="bg-blue-100 w-full overflow-hidden sm:flex lg:hidden flex-col h-[100vh]">
+        <!-- Sidebar for Mobile 
+        <div
+            class="text-white mt-0 p-6 flex flex-col gap-8 bg-no-repeat bg-cover bg-center bg-[url('../src/assets/images/bg-sidebar-mobile.svg')] h-[30vh]">
+            <div class="flex flex-row justify-center items-start gap-10 h-full">
+                <div class="flex items-center gap-4">
+                    <div
+                        class="w-12 h-12 flex items-center justify-center rounded-full bg-white text-blue-600 font-semibold">
+                        1
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 flex items-center justify-center rounded-full border-2 border-white">
+                        2
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12  flex items-center justify-center rounded-full border-2 border-white">
+                        3
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12  flex items-center justify-center rounded-full border-2 border-white">
+                        4
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Section for Mobile 
+        <div class="relative -mt-12 mx-auto w-11/12 max-w-4xl bg-white rounded-lg shadow-lg p-8 z-10">
+            <h2 class="text-2xl font-bold text-gray-800">Personal Info</h2>
+            <p class="text-gray-500 mt-2">Please provide your name, email address, and phone number.</p>
+            <form class="mt-4 space-y-6">
+                <div class="flex flex-col gap-2">
+                    <label for="name" class="text-sm font-medium text-gray-700">Name</label>
+                    <input type="text" id="name" placeholder="Your Name"
+                        class="w-full h-10 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+                </div>
+                <div class="flex flex-col gap-2">
+                    <label for="email" class="text-sm font-medium text-gray-700">Email Address</label>
+                    <input type="email" id="email" placeholder="name@gmail.com"
+                        class="w-full h-10 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+                </div>
+                <div class="flex flex-col gap-2">
+                    <div class="flex justify-between items-center">
+                        <label for="phone" class="text-sm font-medium text-gray-700">Phone Number</label>
+                        <p class="text-sm text-red-500">This field is required</p>
+                    </div>
+                    <input type="tel" id="phone" placeholder="e.g. +91 9933003300"
+                        class="w-full h-10 border-red-500 text-red-500 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500" />
+                </div>
+            </form>
+        </div>
+
+        <!-- Bottom Button 
+        <div class="bg-white fixed bottom-0 left-0 right-0 flex justify-end p-5 w-full shadow-lg">
+            <button type="submit"
+                class="bg-blue-950 text-white py-2 px-6 rounded-md shadow hover:bg-blue-700 focus:ring focus:ring-blue-500">
+                Next Step
+            </button>
+        </div>
+    </div>
+
+
+    <!-- Desktop Section 
+    <div class="bg-white shadow-lg rounded-lg max-w-4xl w-full overflow-hidden hidden lg:flex h-[500px]">
+
+        <!-- Sidebar for Desktop 
+        <div
+            class="text-white p-6 flex flex-col gap-8 lg:w-1/4 bg-no-repeat bg-cover bg-center bg-[url('../src/assets/images/bg-sidebar-desktop.svg')] m-2.5 rounded-lg">
+            <div class="flex flex-col gap-6">
+                <div class="flex items-center gap-4">
+                    <div
+                        class="w-8 h-8 flex items-center justify-center rounded-full bg-white text-blue-600 font-semibold">
+                        1
+                    </div>
+                    <div class="step-detail">
+                        <p class="text-sm uppercase font-medium">Step 1</p>
+                        <p class="text-sm uppercase font-extrabold">YOUR INFO</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="w-8 h-8 flex items-center justify-center rounded-full border-2 border-white">
+                        2
+                    </div>
+                    <div class="step-detail">
+                        <p class="text-sm uppercase font-medium">Step 2</p>
+                        <p class="text-sm uppercase font-extrabold">SELECT PLAN</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="w-8 h-8 flex items-center justify-center rounded-full border-2 border-white">
+                        3
+                    </div>
+                    <div class="step-detail">
+                        <p class="text-sm uppercase font-medium">Step 3</p>
+                        <p class="text-sm uppercase font-extrabold">ADD-ONS</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="w-8 h-8 flex items-center justify-center rounded-full border-2 border-white">
+                        4
+                    </div>
+                    <div class="step-detail">
+                        <p class="text-sm uppercase font-medium">Step 4</p>
+                        <p class="text-sm uppercase font-extrabold">SUMMARY</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Section for Desktop 
+        <div class="p-10 flex-1">
+            <h2 class="text-2xl font-bold text-gray-800">Personal Info</h2>
+            <p class="text-gray-500 mt-2">Please provide your name, email address, and phone number.</p>
+            <form class="mt-8 space-y-8">
+                <div class="flex flex-col gap-2">
+                    <label for="name" class="text-sm font-medium text-gray-700">Name</label>
+                    <input type="text" id="name" placeholder="Your Name"
+                        class="w-full h-10 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+                </div>
+                <div class="flex flex-col gap-2">
+                    <label for="email" class="text-sm font-medium text-gray-700">Email Address</label>
+                    <input type="email" id="email" placeholder="name@gmail.com"
+                        class="w-full h-10 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+                </div>
+                <div class="flex flex-col gap-1">
+                    <div class="flex justify-between items-center">
+                        <label for="phone" class="text-sm font-medium text-gray-700">Phone Number</label>
+                        <p class="text-sm text-red-500">This field is required</p>
+                    </div>
+                    <input type="tel" id="phone" placeholder="e.g. +91 9933003300"
+                        class="w-full h-10 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+                </div>
+
+                <div class="flex justify-end items-start">
+                    <button type="submit"
+                        class="bg-blue-600 text-white py-2 px-6 rounded-md shadow hover:bg-blue-700 focus:ring focus:ring-blue-500">
+                        Next Step
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html> -->
