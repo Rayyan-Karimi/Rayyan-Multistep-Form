@@ -1,0 +1,20 @@
+Create dist and src folders
+
+Create index.html in dist
+
+Go to terminal and do:
+    npx tailwindcss init
+
+Add these in input.css:
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+
+Create basic ! in html
+
+Change content in tailwind.config.js to:
+  content: ["./dist/*"],
+
+Add link to output stylesheet in html
+
+npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch
