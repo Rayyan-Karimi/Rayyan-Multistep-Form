@@ -60,7 +60,7 @@
                         <div class="side_stepper_item flex text-white items-center gap-2">
                             <div
                                 class="stepper__item_circle text-center h-8 w-8 rounded-full leading-7 border-white border-2 bg-transparent">
-                                2</div>
+                                3</div>
                             <div class="stepper_detail flex-col  justify-around">
                                 <div class="step-number">Step 3</div>
                                 <div class="step-detail font-semibold">ADD-ONS</div>
@@ -69,7 +69,7 @@
                         <div class="side_stepper_item flex text-white items-center gap-2">
                             <div
                                 class="stepper__item_circle text-center h-8 w-8 rounded-full leading-7 border-white border-2 bg-transparent">
-                                2</div>
+                                4</div>
                             <div class="stepper_detail flex-col  justify-around">
                                 <div class="step-number">Step 4</div>
                                 <div class="step-detail font-semibold">SUMMARY</div>
@@ -101,8 +101,7 @@
                                 class="w-full h-10 rounded-md shadow-sm " />
                         </div>
                         <!-- Bottom navigations -->
-                        <div
-                            class="flex justify-between bg-white fixed left-0 bottom-0 px-8 py-4 w-full md:static">
+                        <div class="flex justify-between bg-white fixed left-0 bottom-0 px-8 py-4 w-full md:static">
                             <button type="submit" class="prev text-gray-500 p-2">Go Back</button>
                             <button type="submit" class="next bg-blue-500 px-4 rounded-lg text-white ">Next
                                 Step</button>
@@ -141,15 +140,11 @@
                         <!-- Toggle -->
                         <div class="flex items-center justify-center w-full p-4 bg-slate-200 rounded-xl space-x-4">
                             <span class="font-semibold">Monthly</span>
-                            <button id="toggle"
-                                class="relative inline-flex items-center cursor-pointer w-16 h-8 bg-indigo-900 rounded-full transition-colors duration-300 ease-in-out">
-                                <span class="sr-only">Toggle Button</span>
-                                <span
-                                    class="absolute left-0 inline-block w-8 h-8 bg-white rounded-full shadow-md transition-all duration-300 ease-in-out -scale-[75%]"
-                                    id="circle"></span>
-                            </button>
+                            <div id="toggle"
+                                class="flex items-center bg-indigo-900 w-12 h-6 rounded-full p-1 cursor-pointer">
+                                <div id="circle" class="w-4 h-4 bg-white rounded-full transition-transform"></div>
+                            </div>
                             <span>Yearly</span>
-
                         </div>
                     </div>
                     <!-- Bottom navigations -->
@@ -165,38 +160,50 @@
                     <h2 class="text-gray-800 font-bold text-2xl">Add-ons</h2>
                     <p class="text-gray-500 my-2">Add-ons improve your gaming experience.</p>
                     <div class="add-on-types flex flex-col md:flex-row md:flex-wrap md:justify-between gap-2">
-                        <div class="arcade flex items-center gap-8 p-4 border-slate-100 border-2 rounded-lg w-full">
-                            <div class=""><input type="checkbox" name="online service" id="online"></div>
+                        <!-- Online Service -->
+                        <div
+                            class="add-on-type flex items-center gap-8 p-4 border-slate-100 border-2 rounded-lg w-full">
+                            <div class="checkbox-container">
+                                <input type="checkbox" name="online service" id="online" class="checkbox">
+                            </div>
                             <div class="flex justify-between w-full">
-                                <div class="arcade__info flex flex-col">
+                                <div class="flex flex-col">
                                     <h3 class="text-gray-800 font-bold text-lg">Online service</h3>
                                     <p class="text-gray-500 mt-2">Access to multiplayer games.</p>
                                 </div>
-                                <div class="arcade__info flex flex-col justify-around">
+                                <div class="flex flex-col justify-around">
                                     <p class="">+$1/mo</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="arcade flex items-center gap-8 p-4 border-slate-100 border-2 rounded-lg w-full">
-                            <div class=""><input type="checkbox" name="online service" id="online"></div>
+                        <!-- Larger Storage -->
+                        <div
+                            class="add-on-type flex items-center gap-8 p-4 border-slate-100 border-2 rounded-lg w-full">
+                            <div class="checkbox-container">
+                                <input type="checkbox" name="larger storage" id="storage" class="checkbox">
+                            </div>
                             <div class="flex justify-between w-full">
-                                <div class="arcade__info flex flex-col">
+                                <div class="flex flex-col">
                                     <h3 class="text-gray-800 font-bold text-lg">Larger storage</h3>
                                     <p class="text-gray-500 mt-2">Extra 1TB of cloud storage</p>
                                 </div>
-                                <div class="arcade__info flex flex-col justify-around">
+                                <div class="flex flex-col justify-around">
                                     <p class="">+$2/mo</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="arcade flex items-center gap-8 p-4 border-slate-100 border-2 rounded-lg w-full">
-                            <div class=""><input type="checkbox" name="online service" id="online"></div>
+                        <!-- Customizable Profit -->
+                        <div
+                            class="add-on-type flex items-center gap-8 p-4 border-slate-100 border-2 rounded-lg w-full">
+                            <div class="checkbox-container">
+                                <input type="checkbox" name="customizable profit" id="profit" class="checkbox">
+                            </div>
                             <div class="flex justify-between w-full">
-                                <div class="arcade__info flex flex-col">
+                                <div class="flex flex-col">
                                     <h3 class="text-gray-800 font-bold text-lg">Customizable profit</h3>
                                     <p class="text-gray-500 mt-2">Custom theme on your profile.</p>
                                 </div>
-                                <div class="arcade__info flex flex-col justify-around">
+                                <div class="flex flex-col justify-around">
                                     <p class="">+$3/mo</p>
                                 </div>
                             </div>
@@ -205,10 +212,10 @@
                     <!-- Bottom navigations -->
                     <div class="flex justify-between bg-white fixed left-0 bottom-0 px-8 py-4 w-full md:static">
                         <button class="prev text-gray-500 p-2">Go Back</button>
-                        <button class="next bg-blue-500 px-4 rounded-lg text-white ">Next
-                            Step</button>
+                        <button class="next bg-blue-500 px-4 rounded-lg text-white">Next Step</button>
                     </div>
                 </div>
+
                 <!-- Step-4 Confirmation @TODO: -->
                 <div id="step-4" class="pages form hidden relative w-full p-7">
                     <h2 class="text-gray-800 font-bold text-2xl">Finishing up</h2>
@@ -217,7 +224,7 @@
                         <div class="plan-details justify-between items-center flex">
                             <div>
                                 <div class="detail font-semibold">Arcade (Monthly)</div>
-                                <a href="#" class="underline border-none">Change</a>
+                                <a href="#" id="change" class="underline border-none">Change</a>
                             </div>
                             <div class="font-semibold">$90/yr</div>
                         </div>
@@ -243,8 +250,10 @@
                     </div>
                 </div>
                 <!-- Step-4 Thanks -->
-                <div cid="step-5" class="pages form flex relative w-full p-7 flex-col gap-4 -mt-8 justify-center items-center">
-                    <div><img class="p-4" src="../src/assets/images/icon-thank-you.svg" alt="Checkmark for completion."></div>
+                <div cid="step-5"
+                    class="pages form flex relative w-full p-7 flex-col gap-4 -mt-8 justify-center items-center">
+                    <div><img class="p-4" src="../src/assets/images/icon-thank-you.svg" alt="Checkmark for completion.">
+                    </div>
                     <h2 class="text-gray-800 font-bold text-2xl">Thank you!</h2>
                     <p class="text-gray-500 my-2 text-center">Thanks for confirming your subscription! We hope you have
                         fun using our platform. If you ever need support, please feel free to email us at
