@@ -14,6 +14,7 @@
             <div class="mb-hdr-bckgrnd bg-[url('../src/assets/images/bg-sidebar-mobile.svg')] 
                 bg-no-repeat bg-cover bg-center h-40 overflow-y-hidden overflow-x-auto">
             </div>
+            <!-- Mobile stepper header -->
             <div class="stepper absolute flex top-4 left-1/2 -translate-x-1/2 gap-4">
                 <div
                     class="stepper__item_circle text-center text-white h-8 w-8 rounded-full leading-7 border-white border-2 bg-transparent">
@@ -77,7 +78,7 @@
                     </div>
                 </div>
                 <!-- Step-1 Personal Info -->
-                <div class="form hidden w-full p-10">
+                <div id="step-1" class="pages form w-full p-10">
                     <h2 class="text-gray-800 font-bold text-2xl">Personal Info</h2>
                     <p class="text-gray-500 mt-2">Please provide your name, email address, and phone number.</p>
                     <form action="#" class="mt-4 space-y-6">
@@ -101,15 +102,15 @@
                         </div>
                         <!-- Bottom navigations -->
                         <div
-                            class="flex justify-between bg-purple-100 fixed left-0 bottom-0 px-8 py-4 w-full md:static">
-                            <button type="submit" class="text-gray-500 p-2">Go Back</button>
-                            <button type="submit" class="bg-blue-500 px-4 rounded-lg text-white ">Next
+                            class="flex justify-between bg-white fixed left-0 bottom-0 px-8 py-4 w-full md:static">
+                            <button type="submit" class="prev text-gray-500 p-2">Go Back</button>
+                            <button type="submit" class="next bg-blue-500 px-4 rounded-lg text-white ">Next
                                 Step</button>
                         </div>
                     </form>
                 </div>
                 <!-- Step-2 Select Plan -->
-                <div class="form hidden w-full p-10">
+                <div id="step-2" class="pages form hidden w-full p-10">
                     <h2 class="text-gray-800 font-bold text-2xl">Select your plan</h2>
                     <p class="text-gray-500 my-2">You have the option of monthly or yearly billing.</p>
                     <div class="plan-types flex flex-col md:flex-row md:flex-wrap md:justify-between gap-4">
@@ -153,14 +154,14 @@
                     </div>
                     <!-- Bottom navigations -->
                     <div class="flex justify-between bg-white fixed left-0 bottom-0 px-8 py-4 w-full md:static">
-                        <button type="submit" class="text-gray-500 p-2">Go Back</button>
-                        <button type="submit" class="bg-blue-500 px-4 rounded-lg text-white ">Next
+                        <button class="prev text-gray-500 p-2">Go Back</button>
+                        <button class="next bg-blue-500 px-4 rounded-lg text-white ">Next
                             Step</button>
                     </div>
 
                 </div>
                 <!-- Step-3 Add-ons -->
-                <div class="form relative w-full p-7">
+                <div id="step-3" class="pages form hidden relative w-full p-7">
                     <h2 class="text-gray-800 font-bold text-2xl">Add-ons</h2>
                     <p class="text-gray-500 my-2">Add-ons improve your gaming experience.</p>
                     <div class="add-on-types flex flex-col md:flex-row md:flex-wrap md:justify-between gap-2">
@@ -203,13 +204,13 @@
                     </div>
                     <!-- Bottom navigations -->
                     <div class="flex justify-between bg-white fixed left-0 bottom-0 px-8 py-4 w-full md:static">
-                        <button type="submit" class="text-gray-500 p-2">Go Back</button>
-                        <button type="submit" class="bg-blue-500 px-4 rounded-lg text-white ">Next
+                        <button class="prev text-gray-500 p-2">Go Back</button>
+                        <button class="next bg-blue-500 px-4 rounded-lg text-white ">Next
                             Step</button>
                     </div>
                 </div>
                 <!-- Step-4 Confirmation @TODO: -->
-                <div class="form hidden relative w-full p-7">
+                <div id="step-4" class="pages form hidden relative w-full p-7">
                     <h2 class="text-gray-800 font-bold text-2xl">Finishing up</h2>
                     <p class="text-gray-500 my-2">Double check everything looks OK before confirming.</p>
                     <div class="info bg-indigo-50 flex flex-col gap-4 rounded-lg p-4">
@@ -236,14 +237,14 @@
                     </div>
                     <!-- Bottom navigations -->
                     <div class="flex justify-between bg-white fixed left-0 bottom-0 px-8 py-4 w-full md:static">
-                        <button type="submit" class="text-gray-500 p-2">Go Back</button>
-                        <button type="submit" class="bg-blue-500 px-4 rounded-lg text-white ">Next
+                        <button class="prev text-gray-500 p-2">Go Back</button>
+                        <button class="next bg-blue-500 px-4 rounded-lg text-white ">Next
                             Step</button>
                     </div>
                 </div>
                 <!-- Step-4 Thanks -->
-                <div class="form hidden relative w-full p-7 flex flex-col gap-4 -mt-8 justify-center items-center">
-                    <div><img src="../src/assets/images/icon-thank-you.svg" alt="Checkmark for completion."></div>
+                <div cid="step-5" class="pages form flex relative w-full p-7 flex-col gap-4 -mt-8 justify-center items-center">
+                    <div><img class="p-4" src="../src/assets/images/icon-thank-you.svg" alt="Checkmark for completion."></div>
                     <h2 class="text-gray-800 font-bold text-2xl">Thank you!</h2>
                     <p class="text-gray-500 my-2 text-center">Thanks for confirming your subscription! We hope you have
                         fun using our platform. If you ever need support, please feel free to email us at

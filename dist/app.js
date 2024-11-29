@@ -1,80 +1,61 @@
-// // script.js
-// const steps = document.querySelectorAll(".step");
-// const stepsActive = document.querySelectorAll(".step.active");
-// const details = document.querySelectorAll(".step-detail")
-// const prevButton = document.getElementById("prev");
-// const nextButton = document.getElementById("next");
+document.addEventListener("DOMContentLoaded", () => {
+    const pages = document.querySelectorAll(".pages");
+    const stepperCircles = document.querySelectorAll(".stepper__item_circle");
+    const desktopSteps = document.querySelectorAll(".side_stepper_item");
+    let currentStep = 0;
 
-// let currentStep = 0;
+    // Function to update visibility of pages
+    function updatePages() {
+        pages.forEach((page, index) => {
+            if (index === currentStep) {
+                page.classList.remove("hidden");
+            } else {
+                page.classList.add("hidden");
+            }
+        });
 
-// /**
-//  * Main functions
-//  */
-// prevButton.addEventListener("click", () => {
-//     if (currentStep > 0) {
-//         currentStep--;
-//         updateStepper();
-//     }
-// });
+        // Update stepper for mobile
+        stepperCircles.forEach((item, index) => {
+            if (index === currentStep) {
+                item.classList.add("bg-blue-200", "text-black", "border-blue-200");
+                item.classList.remove("bg-transparent");
+            } else {
+                item.classList.remove("bg-blue-200", "text-black", "border-blue-200");
+                item.classList.add("bg-transparent");
+            }
+        });
 
-// nextButton.addEventListener("click", () => {
-//     if (currentStep < steps.length - 1) {
-//         currentStep++;
-//         updateStepper();
-//     }
-// });
+        // Update stepper for desktop
+        desktopSteps.forEach((item, index) => {
+            const circle = item.querySelector(".stepper__item_circle");
+            if (index === currentStep) {
+                circle.classList.add("bg-blue-200", "text-black", "border-blue-200");
+                circle.classList.remove("bg-transparent");
+            } else {
+                circle.classList.remove("bg-blue-200", "text-black", "border-blue-200");
+                circle.classList.add("bg-transparent");
+            }
+        });
+    }
 
-// function updateStepper() {
-//     updateSteps();
-//     updateStepDetails();
-//     updateButtons();
-// }
+    // Handle navigation clicks
+    document.body.addEventListener("click", (event) => {
+        const nextButton = event.target.closest(".next");
+        const prevButton = event.target.closest(".prev");
 
-// updateStepper();
+        if (nextButton) {
+            if (currentStep < pages.length - 1) {
+                currentStep++;
+                updatePages();
+            }
+        } else if (prevButton) {
+            if (currentStep > 0) {
+                currentStep--;
+                updatePages();
+            }
+        }
+    });
 
-
-// /**
-//  * Helper functions
-//  */
-// function updateSteps() {
-//     steps.forEach((step, index) => {
-//         step.classList.toggle("active", index === currentStep);
-//         if(step.classList.contains('active')) {
-//             step.style.background = '#98c8fc';
-//             step.style.color = '#fff';
-//             step.style.borderColor = '#98c8fc';
-//         } else {
-//             // Reset styles for non-active steps (optional)
-//             step.style.background = '';
-//             step.style.color = '';
-//             step.style.borderColor = '';
-//         }
-//     });
-// }
-
-
-
-// function updateStepDetails() {
-//     details.forEach((detail, index) => {
-//         if(detail.classList.contains('active')) {
-//             detail.style.background = '#98c8fc';
-//             detail.style.color = '#fff';
-//             detail.style.borderColor = '#98c8fc';
-//         } else {
-//             // Reset styles for non-active steps (optional)
-//             detail.style.background = '';
-//             detail.style.color = '';
-//             detail.style.borderColor = '';
-//         }
-//     })
-// }
-
-// function updateButtons() {
-//     prevButton.disabled = currentStep === 0;
-//     nextButton.disabled = currentStep === steps.length - 1;
-//     if (currentStep >= steps.length - 2) {
-//         nextButton.innerHTML = "Finish";
-//     } else {
-//         nextButton.innerHTML = "Next";
-//     }
-// }
+    // Initial setup
+    updatePages();
+});
