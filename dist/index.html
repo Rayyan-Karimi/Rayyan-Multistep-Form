@@ -9,88 +9,86 @@
 </head>
 
 <body class="h-full p-0 m-0">
-    <div class="body-container bg-indigo-200 min-h-screen">
+    <div class="body-container bg-indigo-200 min-h-screen justify-center items-center">
         <div class="mobile-header relative md:hidden">
             <div class="mb-hdr-bckgrnd bg-[url('../src/assets/images/bg-sidebar-mobile.svg')] 
                 bg-no-repeat bg-cover bg-center h-40 overflow-y-hidden overflow-x-auto">
             </div>
             <!-- Mobile stepper header -->
             <div class="stepper absolute flex top-4 left-1/2 -translate-x-1/2 gap-4">
-                <div
-                    class="stepper__item_circle text-center text-white h-8 w-8 rounded-full leading-7 border-white border-2 bg-transparent">
+                <div class="stepper_circle text-center h-8 w-8 rounded-full leading-7 bg-transparent">
                     1</div>
-                <div
-                    class="stepper__item_circle text-center text-white h-8 w-8 rounded-full leading-7 border-white border-2 bg-transparent">
+                <div class="stepper_circle text-center h-8 w-8 rounded-full leading-7 bg-transparent">
                     2</div>
-                <div
-                    class="stepper__item_circle text-center text-white h-8 w-8 rounded-full leading-7 border-white border-2 bg-transparent">
+                <div class="stepper_circle text-center h-8 w-8 rounded-full leading-7 bg-transparent">
                     3</div>
-                <div
-                    class="stepper__item_circle text-center text-white h-8 w-8 rounded-full leading-7 border-white border-2 bg-transparent">
+                <div class="stepper_circle text-center h-8 w-8 rounded-full leading-7 bg-transparent">
                     4</div>
-                <div
-                    class="stepper__item_circle text-center text-white h-8 w-8 rounded-full leading-7 border-white border-2 bg-transparent hidden">
+                <div class="stepper_circle text-center h-8 w-8 rounded-full leading-7 bg-transparent hidden">
                     5</div>
             </div>
         </div>
-        <div class="main-container box-border absolute top-24 px-[16.66%] w-full">
+        <div class="main-container box-border absolute top-24 px-[10%] lg:px-[16.67%] w-full md:min-w-[600px]">
             <div class="flex-wrapper flex-container flex shadow-lg rounded-lg bg-white">
                 <!-- Desktop sidebar -->
                 <div
                     class="hidden md:block md:w-[33%] md:min-w-[210px] bg-cover rounded-lg bg-[url('../src/assets/images/bg-sidebar-desktop.svg')] min-h-96 m-8 relative">
                     <div class="stepper absolute flex flex-col top-[10%] left-[10%] gap-4">
-                        <div class="side_stepper_item flex text-white items-center gap-2">
+                        <div class="side_stepper_item flex items-center gap-2">
                             <div
-                                class="stepper__item_circle text-center h-8 w-8 rounded-full leading-7 border-white border-2 bg-transparent">
+                                class="desktop_stepper_circle text-center h-8 w-8 rounded-full leading-7 bg-transparent">
                                 1</div>
-                            <div class="stepper_detail flex-col  justify-around">
+                            <div class="stepper_detail flex-col text-white justify-around">
                                 <div class="step-number">Step 1</div>
                                 <div class="step-detail font-semibold">YOUR INFO</div>
                             </div>
                         </div>
-                        <div class="side_stepper_item flex text-white items-center gap-2">
+                        <div class="side_stepper_item flex items-center gap-2">
                             <div
-                                class="stepper__item_circle text-center h-8 w-8 rounded-full leading-7 border-white border-2 bg-transparent">
+                                class="desktop_stepper_circle text-center h-8 w-8 rounded-full leading-7 bg-transparent">
                                 2</div>
-                            <div class="stepper_detail flex-col  justify-around">
+                            <div class="stepper_detail flex-col text-white justify-around">
                                 <div class="step-number">Step 2</div>
                                 <div class="step-detail font-semibold">SELECT PLAN</div>
                             </div>
                         </div>
-                        <div class="side_stepper_item flex text-white items-center gap-2">
+                        <div class="side_stepper_item flex items-center gap-2">
                             <div
-                                class="stepper__item_circle text-center h-8 w-8 rounded-full leading-7 border-white border-2 bg-transparent">
+                                class="desktop_stepper_circle text-center h-8 w-8 rounded-full leading-7 bg-transparent">
                                 3</div>
-                            <div class="stepper_detail flex-col  justify-around">
+                            <div class="stepper_detail flex-col text-white justify-around">
                                 <div class="step-number">Step 3</div>
                                 <div class="step-detail font-semibold">ADD-ONS</div>
                             </div>
                         </div>
-                        <div class="side_stepper_item flex text-white items-center gap-2">
+                        <div class="side_stepper_item flex items-center gap-2">
                             <div
-                                class="stepper__item_circle text-center h-8 w-8 rounded-full leading-7 border-white border-2 bg-transparent">
+                                class="desktop_stepper_circle text-center h-8 w-8 rounded-full leading-7 bg-transparent">
                                 4</div>
-                            <div class="stepper_detail flex-col  justify-around">
+                            <div class="stepper_detail flex-col text-white justify-around">
                                 <div class="step-number">Step 4</div>
                                 <div class="step-detail font-semibold">SUMMARY</div>
                             </div>
                         </div>
+                        <div
+                            class="desktop_stepper_circle hidden text-center h-8 w-8 rounded-full leading-7 bg-transparent">
+                            5</div>
                     </div>
                 </div>
                 <!-- Step-1 Personal Info -->
-                <div id="step-1" class="pages form w-full p-10">
+                <div id="step-1" class="steps form w-full p-10">
                     <h2 class="text-gray-800 font-bold text-2xl">Personal Info</h2>
                     <p class="text-gray-500 mt-2">Please provide your name, email address, and phone number.</p>
-                    <form action="#" class="mt-4 space-y-6">
+                    <form action="#" class="mt-4 space-y-6 form-1" onsubmit="()=> {validateForm()}">
                         <div class="flex flex-col gap-2">
                             <label for="name" class="text-sm font-medium text-gray-700">Name</label>
                             <input type="text" id="name" placeholder="e.g. Stephen King"
-                                class="w-full h-10 rounded-md shadow-sm " />
+                                class="w-full h-10 rounded-md shadow-sm " required />
                         </div>
                         <div class="flex flex-col gap-2">
                             <label for="email" class="text-sm font-medium text-gray-700">Email Address</label>
                             <input type="email" id="email" placeholder="e.g. stephenking@lorem.com"
-                                class="w-full h-10 rounded-md shadow-sm " />
+                                class="w-full h-10 rounded-md shadow-sm " required />
                         </div>
                         <div class="flex flex-col gap-2">
                             <div class="flex justify-between items-center">
@@ -98,71 +96,116 @@
                                 <p class="text-sm text-red-500 hidden">This field is required</p>
                             </div>
                             <input type="tel" id="phone" placeholder="e.g. +123 456 7890"
-                                class="w-full h-10 rounded-md shadow-sm " />
+                                class="w-full h-10 rounded-md shadow-sm " required />
                         </div>
                         <!-- Bottom navigations -->
-                        <div class="flex justify-between bg-white fixed left-0 bottom-0 px-8 py-4 w-full md:static">
-                            <button type="submit" class="prev text-gray-500 p-2">Go Back</button>
-                            <button type="submit" class="next bg-blue-500 px-4 rounded-lg text-white ">Next
+                        <div class="flex justify-end bg-white fixed left-0 bottom-0 px-8 py-4 w-full md:static">
+                            <button type="submit"
+                                class="custom-button next bg-blue-500 px-4 py-2 rounded-lg text-white ">Next
                                 Step</button>
                         </div>
                     </form>
                 </div>
                 <!-- Step-2 Select Plan -->
-                <div id="step-2" class="pages form hidden w-full p-10">
+                <div id="step-2" class="steps form hidden w-full p-10">
                     <h2 class="text-gray-800 font-bold text-2xl">Select your plan</h2>
                     <p class="text-gray-500 my-2">You have the option of monthly or yearly billing.</p>
                     <div class="plan-types flex flex-col md:flex-row md:flex-wrap md:justify-between gap-4">
-                        <button
-                            class="arcade flex gap-4 p-4 w-full border-slate-100 border-2 focus:border-indigo-300 rounded-lg">
-                            <img src="../src/assets/images/icon-arcade.svg" alt="Arcade image" class="">
-                            <div class="arcade__info flex flex-col justify-around">
+                        <!-- Monthly Plan: Arcade -->
+                        <div class="monthly-plan-type plan-type flex gap-4 p-4 w-full border-slate-100 border-2 rounded-lg"
+                            data-plan="Arcade" data-price="9" data-duration="mo">
+                            <input type="radio" name="plan" value="Arcade" class="sr-only">
+                            <img src="../src/assets/images/icon-arcade.svg" alt="Arcade image">
+                            <div class="arcade_info flex flex-col justify-around items-start">
                                 <h3 class="text-gray-800 font-bold text-lg">Arcade</h3>
                                 <p class="text-gray-500 mt-2">$9/mo</p>
                             </div>
-                        </button>
-                        <button
-                            class="advanced flex gap-4 p-4 w-full border-slate-100 border-2 focus:border-indigo-300 rounded-lg">
+                        </div>
+
+                        <!-- Yearly Plan: Arcade -->
+                        <div class="yearly-plan-type plan-type hidden flex gap-4 p-4 w-full border-slate-100 border-2 rounded-lg"
+                            data-plan="Arcade" data-price="90" data-duration="yr">
+                            <input type="radio" name="plan" value="Arcade-Yearly" class="sr-only">
+                            <img src="../src/assets/images/icon-arcade.svg" alt="Arcade image">
+                            <div class="arcade_info flex flex-col justify-around items-start">
+                                <h3 class="text-gray-800 font-bold text-lg">Arcade</h3>
+                                <p class="text-gray-500 mt-1">$90/yr</p>
+                                <p class="text-blue-600 mt-1">2 months free</p>
+                            </div>
+                        </div>
+
+                        <!-- Monthly Plan: Advanced -->
+                        <div class="monthly-plan-type plan-type flex gap-4 p-4 w-full border-slate-100 border-2 rounded-lg"
+                            data-plan="Advanced" data-price="12" data-duration="mo">
+                            <input type="radio" name="plan" value="Advanced" class="sr-only">
                             <img src="../src/assets/images/icon-advanced.svg" alt="Advanced image">
-                            <div class="arcade__info flex flex-col justify-around">
+                            <div class="advanced_info flex flex-col justify-around items-start">
                                 <h3 class="text-gray-800 font-bold text-lg">Advanced</h3>
                                 <p class="text-gray-500 mt-2">$12/mo</p>
                             </div>
-                        </button>
-                        <button
-                            class="arcade flex gap-4 p-4 w-full border-slate-100 border-2 focus:border-indigo-300 rounded-lg">
+                        </div>
+
+                        <!-- Yearly Plan: Advanced -->
+                        <div class="yearly-plan-type plan-type hidden flex gap-4 p-4 w-full border-slate-100 border-2 rounded-lg"
+                            data-plan="Advanced" data-price="120" data-duration="yr">
+                            <input type="radio" name="plan" value="Advanced-Yearly" class="sr-only">
+                            <img src="../src/assets/images/icon-advanced.svg" alt="Advanced image">
+                            <div class="advanced_info flex flex-col justify-around items-start">
+                                <h3 class="text-gray-800 font-bold text-lg">Advanced</h3>
+                                <p class="text-gray-500 mt-1">$120/yr</p>
+                                <p class="text-blue-600 mt-1">2 months free</p>
+                            </div>
+                        </div>
+
+                        <!-- Monthly Plan: Pro -->
+                        <div class="monthly-plan-type plan-type flex gap-4 p-4 w-full border-slate-100 border-2 rounded-lg"
+                            data-plan="Pro" data-price="12" data-duration="mo">
+                            <input type="radio" name="plan" value="Pro" class="sr-only">
                             <img src="../src/assets/images/icon-pro.svg" alt="Pro image">
-                            <div class="arcade__info flex flex-col justify-around">
+                            <div class="pro_info flex flex-col justify-around items-start">
                                 <h3 class="text-gray-800 font-bold text-lg">Pro</h3>
                                 <p class="text-gray-500 mt-2">$15/mo</p>
                             </div>
-                        </button>
-                        <!-- Toggle -->
-                        <div class="flex items-center justify-center w-full p-4 bg-slate-200 rounded-xl space-x-4">
-                            <span class="font-semibold">Monthly</span>
-                            <div id="toggle"
-                                class="flex items-center bg-indigo-900 w-12 h-6 rounded-full p-1 cursor-pointer">
+                        </div>
+
+                        <!-- Yearly Plan: Pro -->
+                        <div class="yearly-plan-type plan-type hidden flex gap-4 p-4 w-full border-slate-100 border-2 rounded-lg"
+                            data-plan="Pro" data-price="150" data-duration="yr">
+                            <input type="radio" name="plan" value="Pro-Yearly" class="sr-only">
+                            <img src="../src/assets/images/icon-pro.svg" alt="Pro image">
+                            <div class="pro_info flex flex-col justify-around items-start">
+                                <h3 class="text-gray-800 font-bold text-lg">Pro</h3>
+                                <p class="text-gray-500 mt-1">$150/yr</p>
+                                <p class="text-blue-600 mt-1">2 months free</p>
+                            </div>
+                        </div>
+
+                        <!-- Toggle between Monthly and Yearly -->
+                        <div id="toggle"
+                            class="flex items-center justify-center w-full p-4 bg-slate-200 rounded-xl space-x-4">
+                            <span id="monthly" class="font-semibold">Monthly</span>
+                            <div class="flex items-center bg-indigo-900 w-12 h-6 rounded-full p-1 cursor-pointer">
                                 <div id="circle" class="w-4 h-4 bg-white rounded-full transition-transform"></div>
                             </div>
-                            <span>Yearly</span>
+                            <span id="annual">Yearly</span>
                         </div>
                     </div>
+
                     <!-- Bottom navigations -->
                     <div class="flex justify-between bg-white fixed left-0 bottom-0 px-8 py-4 w-full md:static">
-                        <button class="prev text-gray-500 p-2">Go Back</button>
-                        <button class="next bg-blue-500 px-4 rounded-lg text-white ">Next
+                        <button type="submit" class="prev text-gray-500 p-2">Go Back</button>
+                        <button type="submit" class="next bg-blue-500 px-4 rounded-lg text-white ">Next
                             Step</button>
                     </div>
-
                 </div>
+
                 <!-- Step-3 Add-ons -->
-                <div id="step-3" class="pages form hidden relative w-full p-7">
+                <div id="step-3" class="steps form hidden relative w-full p-7">
                     <h2 class="text-gray-800 font-bold text-2xl">Add-ons</h2>
                     <p class="text-gray-500 my-2">Add-ons improve your gaming experience.</p>
                     <div class="add-on-types flex flex-col md:flex-row md:flex-wrap md:justify-between gap-2">
-                        <!-- Online Service -->
-                        <div
-                            class="add-on-type flex items-center gap-8 p-4 border-slate-100 border-2 rounded-lg w-full">
+                        <div class="add-on-type flex items-center gap-8 p-4 border-slate-100 border-2 rounded-lg w-full"
+                            data-addon="Online service" data-price="1">
                             <div class="checkbox-container">
                                 <input type="checkbox" name="online service" id="online" class="checkbox">
                             </div>
@@ -172,13 +215,13 @@
                                     <p class="text-gray-500 mt-2">Access to multiplayer games.</p>
                                 </div>
                                 <div class="flex flex-col justify-around">
-                                    <p class="">+$1/mo</p>
+                                    <p id="monthly-access" class="monthly-extras">+$1/mo</p>
+                                    <p id="yearly-access" class="yearly-extras hidden">+$10/yr</p>
                                 </div>
                             </div>
                         </div>
-                        <!-- Larger Storage -->
-                        <div
-                            class="add-on-type flex items-center gap-8 p-4 border-slate-100 border-2 rounded-lg w-full">
+                        <div class="add-on-type flex items-center gap-8 p-4 border-slate-100 border-2 rounded-lg w-full"
+                            data-addon="Larger storage" data-price="2">
                             <div class="checkbox-container">
                                 <input type="checkbox" name="larger storage" id="storage" class="checkbox">
                             </div>
@@ -188,13 +231,13 @@
                                     <p class="text-gray-500 mt-2">Extra 1TB of cloud storage</p>
                                 </div>
                                 <div class="flex flex-col justify-around">
-                                    <p class="">+$2/mo</p>
+                                    <p id="monthly-storage" class="monthly-extras">+$2/mo</p>
+                                    <p id="yearly-storage" class="yearly-extras hidden">+$20/yr</p>
                                 </div>
                             </div>
                         </div>
-                        <!-- Customizable Profit -->
-                        <div
-                            class="add-on-type flex items-center gap-8 p-4 border-slate-100 border-2 rounded-lg w-full">
+                        <div class="add-on-type flex items-center gap-8 p-4 border-slate-100 border-2 rounded-lg w-full"
+                            data-addon="Customizable profit" data-price="3">
                             <div class="checkbox-container">
                                 <input type="checkbox" name="customizable profit" id="profit" class="checkbox">
                             </div>
@@ -204,43 +247,29 @@
                                     <p class="text-gray-500 mt-2">Custom theme on your profile.</p>
                                 </div>
                                 <div class="flex flex-col justify-around">
-                                    <p class="">+$3/mo</p>
+                                    <p id="monthly-custom" class="monthly-extras">+$3/mo</p>
+                                    <p id="yearly-custom" class="yearly-extras hidden">+$30/yr</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- Bottom navigations -->
                     <div class="flex justify-between bg-white fixed left-0 bottom-0 px-8 py-4 w-full md:static">
-                        <button class="prev text-gray-500 p-2">Go Back</button>
-                        <button class="next bg-blue-500 px-4 rounded-lg text-white">Next Step</button>
+                        <button type="submit" class="prev text-gray-500 p-2">Go Back</button>
+                        <button type="submit" class="next bg-blue-500 px-4 rounded-lg text-white ">Next
+                            Step</button>
                     </div>
                 </div>
 
                 <!-- Step-4 Confirmation @TODO: -->
-                <div id="step-4" class="pages form hidden relative w-full p-7">
+                <div id="step-4" class="steps form hidden relative w-full p-7">
                     <h2 class="text-gray-800 font-bold text-2xl">Finishing up</h2>
                     <p class="text-gray-500 my-2">Double check everything looks OK before confirming.</p>
                     <div class="info bg-indigo-50 flex flex-col gap-4 rounded-lg p-4">
                         <div class="plan-details justify-between items-center flex">
-                            <div>
-                                <div class="detail font-semibold">Arcade (Monthly)</div>
-                                <a href="#" id="change" class="underline border-none">Change</a>
-                            </div>
-                            <div class="font-semibold">$90/yr</div>
-                        </div>
-                        <hr>
-                        <div class="addons-details flex justify-between">
-                            <div class="detail">Online service</div>
-                            <div class="detail">+$10/yr</div>
-                        </div>
-                        <div class="larger-details flex justify-between">
-                            <div class="detail">Larger storage</div>
-                            <div class="detail">+$20/yr</div>
                         </div>
                     </div>
                     <div class="total flex justify-between mt-6">
-                        <p>Total (per year)</p>
-                        <p class="font-bold text-blue-700">$120/yr</p>
                     </div>
                     <!-- Bottom navigations -->
                     <div class="flex justify-between bg-white fixed left-0 bottom-0 px-8 py-4 w-full md:static">
@@ -251,7 +280,7 @@
                 </div>
                 <!-- Step-4 Thanks -->
                 <div cid="step-5"
-                    class="pages form flex relative w-full p-7 flex-col gap-4 -mt-8 justify-center items-center">
+                    class="steps hidden form flex relative w-full p-7 flex-col gap-4 -mt-8 justify-center items-center">
                     <div><img class="p-4" src="../src/assets/images/icon-thank-you.svg" alt="Checkmark for completion.">
                     </div>
                     <h2 class="text-gray-800 font-bold text-2xl">Thank you!</h2>
@@ -262,6 +291,9 @@
             </div>
         </div>
         <script type="module" src="app.js"></script>
+        <script>
+
+        </script>
 </body>
 
 </html>
