@@ -4,75 +4,75 @@ document.addEventListener("DOMContentLoaded", () => {
     const form1 = document.querySelector(".form-1");
     const stepperCircles = document.querySelectorAll(".stepper_circle");
     const desktopStepperCircles = document.querySelectorAll(".desktop_stepper_circle");
-    let currentStep = 3;
-    let isYearly = false;
-    let selectedPlan = {};
-    let selectedAddOns = [];
-
+    let currentStep = 0
+    let isYearly = false
+    let selectedPlan = {}
+    let selectedAddOns = []
 
     form1.addEventListener("submit", e => {
-        // e.preventDefault()
-        const name = document.getElementById("name").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const phone = document.getElementById("phone").value.trim();
-
+        console.log("clicked submit button")
+        const name = document.querySelector("#name").value.trim()
+        const email = document.querySelector("#email").value.trim()
+        const phone = document.querySelector("#phone").value.trim()
         if (!name || !email || !phone) {
             return false;
         }
-
         const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
         const phonePattern = /^\+?[0-9]{1,4}[-\s]?[0-9]{1,15}$/;
-
+        // console.log('email check', emailPattern.test(email))
         if (!emailPattern.test(email)) {
-            return false;
+            return false
         }
-
+        // console.log('phone check', phonePattern.test(phone))
         if (!phonePattern.test(phone)) {
-            return false;
+            return false
         }
-
-        currentStep++;
+        console.log("Form submitted, updating steps...", currentStep);
+        currentStep++
         updateSteps()
-
-        return true;
-
-
+        console.log("Form submitted, moving to next step...", currentStep);
+        return true
     })
 
-
-
     document.body.addEventListener("click", (event) => {
+        console.log('You have clicked.')
 
-        console.log('Yoou clicked.')
         if (event.target.classList.contains("custom-button")) {
             return;
-        }
-        // #1
-        // event.stopPropagation()
+        } // @FIXME: This is to remove event delegation on first page.
 
         const toggleButton = event.target.closest('#toggle');
-
         if (toggleButton) {
-            const circle = toggleButton.querySelector('#circle'); // Select the circle inside the toggle
+            toggle()
+        }
+        function toggle() {
+            const circle = document.querySelector('#circle');
             isYearly = !isYearly;
             circle.classList.toggle('translate-x-6');
-            // Call a function to handle the plan display logic if needed
+            emptyPlan()
+            emptyAddons()
             updatePlanDisplay(isYearly);
-            // Empty the cart
+        }
+
+        function emptyPlan() {
             selectedPlan = {}
-            selectedAddOns = []
             document.querySelectorAll('.plan-type').forEach((plan) => {
                 plan.classList.remove('border-blue-500')
                 plan.classList.add('border-slate-100')
             })
-            document.querySelectorAll('.add-on-type').forEach((addOnType) => {
-                addOnType.querySelectorAll('.checkbox').forEach((checkbox) => {
-                    checkbox.checked = false;
-                    addOnType.classList.remove('bg-slate-100', 'border-blue-400');
-                })
+        }
+
+        function emptyAddons() {
+            selectedAddOns = [];
+            const addons = document.querySelectorAll('.add-on-type')
+            addons.forEach(addon => {
+                const checkbox = addon.querySelector('.checkbox')
+                // if (addon.checked) {
+                checkbox.checked = false
+                addon.classList.add('border-slate-100')
+                addon.classList.remove('bg-slate-100', 'border-blue-400')// @FIXME: This is a hack to remove the border.
+                // }
             })
-            updateStep4()
-            console.log("selectedAddOns", selectedAddOns, "selectedPlan", selectedPlan)
         }
 
         function updatePlanDisplay(isAnnual) {
@@ -93,64 +93,68 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
 
-        const addOnType = event.target.closest(".add-on-type");
-
-        if (addOnType) {
-            const checkbox = addOnType.querySelector('.checkbox');
-            checkbox.checked = !checkbox.checked;
-            const addonName = addOnType.dataset.addon;
-            const addonPrice = parseInt(addOnType.dataset.price, 10);
-
-            // Update the selectedAddOns array
-            if (checkbox.checked) {
-                selectedAddOns.push({ name: addonName, price: addonPrice });
-                addOnType.classList.add('bg-slate-100', 'border-blue-400');
-            } else {
-                selectedAddOns = selectedAddOns.filter(addon => addon.name !== addonName);
-                addOnType.classList.remove('bg-slate-100', 'border-blue-400');
-            }
-
-        }
-
-        // console.log("event target", event.target)
-        // console.log("previously selected plan:", selectedPlan)
         const planType = event.target.closest('.plan-type')
-        // console.log("current targeted plan", planType)
-
-        // console.log(selectedPlan.price, ", ", planType.dataset.price)
         if (planType && (selectedPlan.price != planType.dataset.price)) {
-            console.log('in')
+            // Changing plan
+            document.querySelectorAll('.plan-type').forEach((plan) => {
+                plan.classList.remove('border-blue-500')
+                plan.classList.add('border-slate-100')
+            })
             selectedPlan = {
                 name: planType.dataset.plan,
                 price: parseInt(planType.dataset.price, 10),
                 duration: planType.dataset.duration
             }
-
-            document.querySelectorAll('.plan-type').forEach((plan) => {
-                plan.classList.remove('border-blue-500')
-                plan.classList.add('border-slate-100')
-            })
             planType.classList.add('border-blue-500')
             planType.classList.remove('border-slate-100')
+            emptyAddons()
         } else if (planType && (selectedPlan.price == planType.dataset.price)) {
-            // console.log("Same plan selected")
-            console.log('in for reclick')
+            // Deselecting plan
             selectedPlan = {}
             planType.classList.remove('border-blue-500')
             planType.classList.add('border-slate-100')
+            emptyAddons()
         }
-        console.log("selected plan:", selectedPlan)
+        // console.log("selected plan", selectedPlan)
+        // console.log("selectedAddOns", selectedAddOns)
+        if (currentStep === 1 && Object.keys(selectedPlan).length === 0) {
+            const nextBtn = document.querySelector("#step-2 .next")
+            nextBtn.disabled = true;
+        } else if (currentStep === 1 && Object.keys(selectedPlan).length > 0) {
+            const nextBtn = document.querySelector("#step-2 .next")
+            nextBtn.disabled = false;
+        }
+
+        const addonType = event.target.closest(".add-on-type");
+
+        if (addonType) {
+            const checkbox = addonType.querySelector('.checkbox');
+            checkbox.checked = !checkbox.checked;
+            const addonName = addonType.dataset.addon; // @FIXME: find addons logic
+            const addonPrice = parseInt(addonType.dataset.price, 10);
+            const addonDuration = addonType.dataset.duration;
+
+            // Update the selectedAddOns array
+            if (checkbox.checked) {
+                selectedAddOns.push({ name: addonName, price: addonPrice, duration: addonDuration });
+                addonType.classList.remove('border-slate-100')
+                addonType.classList.add('bg-slate-100', 'border-blue-400');
+            } else {
+                selectedAddOns = selectedAddOns.filter(addon => addon.name !== addonName);
+                addonType.classList.add('border-slate-100')
+                addonType.classList.remove('bg-slate-100', 'border-blue-400');
+            }
+        }
 
 
         const nextButton = event.target.closest(".next");
         const prevButton = event.target.closest(".prev");
         if (nextButton) {
-            // console.log("Anitya");
-            // const a=document.querySelector("#name").value;
-            // console.log(a);
             if (currentStep < steps.length - 1) {
+                console.log('next button clicked, earlier it was:', currentStep)
                 currentStep++;
                 updateSteps();
+                console.log('incremented on click', currentStep)
             }
             console.log("current step:", currentStep, "is yearly:", isYearly)
         } else if (prevButton) {
@@ -159,28 +163,27 @@ document.addEventListener("DOMContentLoaded", () => {
                 updateSteps();
             }
         }
-
         const change = event.target.closest("#change");
         if (change) {
             currentStep = 1;
+            toggle()
+            toggle()
             updateSteps();
         }
     });
 
     function updateSteps() {
-        console.log(currentStep)
         steps.forEach((step, index) => {
             step.classList.toggle("hidden", index !== currentStep);
         });
 
-        // If Step-4 is active, update its content
-        if (currentStep === 3) { // Assuming Step-4 is the fourth page (index 3)
-            updateStep4();
+        if (currentStep === 3) {
+            console.log("page is now on 4")
+            updateStep4()
         }
 
         // Update stepper for mobile and desktop
         stepperCircles.forEach((circle, index) => {
-            // console.log("stepper circle index", index)
             circle.classList.toggle("text-white", index !== currentStep)
             circle.classList.toggle("border-2", index !== currentStep)
             circle.classList.toggle("bg-blue-300", index === currentStep)
@@ -188,100 +191,58 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         desktopStepperCircles.forEach((circle, index) => {
-            // console.log("desktop stepper circle index", index)
             circle.classList.toggle("text-white", index !== currentStep)
             circle.classList.toggle("border-2", index !== currentStep)
             circle.classList.toggle("bg-blue-300", index === currentStep)
             circle.classList.toggle("bg-transparent", index !== currentStep)
         });
     }
-
     function updateStep4() {
-
-        const confirmationInfoDiv = document.querySelector("#step-4 .info");
-        const planDetailsDiv = document.querySelector("#step-4 .plan-details");
-        const totalsDiv = document.querySelector("#step-4 .total");
-
-        let addOnsHtml = ``;
-        let totalAddOnsPrice = 0;
-        console.log("selectedAddOns", selectedAddOns, "selectedPlan", selectedPlan)
-
-        if (selectedAddOns.length === 0 && Object.keys(selectedPlan).length === 0) {
-            // confirmationInfoDiv.innerHTML = "";
-            emptyCart()
-            planDetailsDiv.innerHTML = "";
-            totalsDiv.innerHTML = "";
+        console.log("Selected plan", selectedPlan, "Selected add on-s", selectedAddOns)
+        const planDetails = document.querySelector('.plan-details')
+        const addonsContainer = document.querySelector('.addons-container')
+        let totalPrice = 0
+        if (selectedPlan) {
+            planDetails.innerHTML = `
+        <div>
+            <div class="font-semibold">${selectedPlan.name} (${isYearly ? "Yearly" : "Monthly"})</div>
+            <a href="#" id="change" class="underline border-none">Change</a>
+        </div>
+        <div class="font-semibold">$${selectedPlan.price}/${selectedPlan.duration}</div>
+        `
+            totalPrice += selectedPlan.price;
         }
 
-        selectedAddOns.forEach(addon => {
-            const price = addon.price;
-            const duration = isYearly ? "/yr" : "/mo";
-            addOnsHtml += `
-                <div class="flex justify-between">
-                    <div class="detail">${addon.name}</div>
-                    <div class="detail">+$${price}${duration}</div>
+        addonsContainer.innerHTML = ``
+        let selectedAddonsHtml = '';
+        if (selectedAddOns.length > 0) {
+            planDetails.insertAdjacentHTML("beforeend", `<hr>`)
+            selectedAddOns.forEach((addon) => {
+                let currentAddonName = addon.name, currentAddonPrice = addon.price, currentAddonDuration = addon.duration;
+                selectedAddonsHtml += `
+                <div class = "flex justify-between">
+                    <div>${currentAddonName}</div>
+                    <div>$${currentAddonPrice}/${currentAddonDuration}</div>
                 </div>
-            `;
-            totalAddOnsPrice += price;
-        });
-
-        if (Object.keys(selectedPlan).length !== 0) {
-            const planPrice = selectedPlan.price;
-            const totalPrice = planPrice + totalAddOnsPrice;
-            const planDuration = isYearly ? "/yr" : "/mo";
-
-            // Update plan details
-            if (planDetailsDiv) {
-                planDetailsDiv.innerHTML = `
-                <div>
-                    <div class="detail font-semibold">${selectedPlan.name} (${isYearly ? "Yearly" : "Monthly"})</div>
-                    <a href="#" id="change" class="underline border-none">Change</a>
-                </div>
-                <div class="font-semibold">$${planPrice}${planDuration}</div>
-            `;
-            }
-            // Update add-ons details
-            if (confirmationInfoDiv) {
-                confirmationInfoDiv.innerHTML = `
-                <div class="plan-details justify-between items-center flex">
-                    ${planDetailsDiv.innerHTML}
-                </div>
-                <hr>
-                ${addOnsHtml}
-            `;
-            }
-            // Update total
-            if (totalsDiv) {
-                totalsDiv.innerHTML = `
-                <p>Total (per ${isYearly ? "year" : "month"})</p>
-                <p class="font-bold text-blue-700">$${totalPrice}${planDuration}</p>
-            `;
-            }
-            document.querySelector("#step-4 .next").disabled = false;
-            document.querySelector("#step-4 .next").classList.toggle('bg-blue-500');
-            document.querySelector("#step-4 .next").classList.toggle('bg-gray-500');
-        } else {
-            emptyCart()
+                `
+                console.log(selectedAddonsHtml)
+                totalPrice += currentAddonPrice
+            })
+            addonsContainer.innerHTML = selectedAddonsHtml
+            console.log(addonsContainer)
         }
 
-        function emptyCart() {
-            planDetailsDiv.innerHTML = `
-                <div>
-                    <div class="detail font-semibold">No plans selected</div>
-                    <a href="#" id="change" class="underline border-none">Change</a>
-                </div>
-                <div class="font-semibold">Please select plans you may like.</div>
-            `;
-            document.querySelector("#step-4 .next").disabled = true;
-            document.querySelector("#step-4 .next").classList.toggle('bg-blue-500');
-            document.querySelector("#step-4 .next").classList.toggle('bg-gray-500');
-        }
+        const totalsDiv = document.querySelector('.total')
+        totalsDiv.innerHTML = `
+            <p>Total (per ${isYearly ? "year" : "month"})</p>
+            <p class="font-bold text-blue-700">$${totalPrice}/${selectedPlan.duration}</p>
+        `;
+
+
 
     }
 
-    // Initial stepper and page setup
     updateSteps();
-
 });
 
 
