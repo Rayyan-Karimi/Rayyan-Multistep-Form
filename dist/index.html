@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en" class="p-0 m-0">
 
 <head>
@@ -87,20 +88,26 @@
                         <div class="flex flex-col gap-2">
                             <label for="name" class="text-sm font-medium text-gray-700">Name</label>
                             <input type="text" id="name" placeholder="e.g. Stephen King"
-                                class="w-full h-10 rounded-md shadow-sm " required="">
+                                class="w-full h-10 rounded-md shadow-sm" autocomplete="username">
+                            <p id="name-error" class="text-red-500 text-sm m-1 hidden">This field is required.</p>
                         </div>
                         <div class="flex flex-col gap-2">
                             <label for="email" class="text-sm font-medium text-gray-700">Email Address</label>
                             <input type="email" id="email" placeholder="e.g. stephenking@lorem.com"
-                                class="w-full h-10 rounded-md shadow-sm " required="">
+                                class="w-full h-10 rounded-md shadow-sm" autocomplete="email">
+                            <p id="email-error" class="text-red-500 text-sm m-1 hidden">This field is required.</p>
+                            <p id="email-invalid" class="text-red-500 text-sm m-1 hidden">Please provide valid email.
+                            </p>
                         </div>
                         <div class="flex flex-col gap-2">
                             <div class="flex justify-between items-center">
                                 <label for="phone" class="text-sm font-medium text-gray-700">Phone Number</label>
-                                <p class="text-sm text-red-500 hidden">This field is required</p>
                             </div>
                             <input type="tel" id="phone" placeholder="e.g. +123 456 7890"
-                                class="w-full h-10 rounded-md shadow-sm " required="">
+                                class="w-full h-10 rounded-md shadow-sm" autocomplete="tel">
+                            <p id="phone-error" class="text-sm text-red-500 hidden">This field is required</p>
+                            <p id="phone-invalid" class="text-red-500 text-sm m-1 hidden">Please provide valid phone
+                                number.</p>
                         </div>
                         <!-- Bottom navigations -->
                         <div class="flex justify-end bg-white fixed left-0 bottom-0 px-8 py-4 w-full md:static">
@@ -218,7 +225,7 @@
                         <div data-addon="Online service" data-price="1" data-duration="mo"
                             class="add-on-type monthly-extras flex items-center gap-8 p-4 border-slate-100 border-2 rounded-lg w-full">
                             <div class="checkbox-container">
-                                <input type="checkbox" name="online service" id="online" class="checkbox">
+                                <input type="checkbox" name="online service" id="monthly-online" class="checkbox">
                             </div>
                             <div class="flex justify-between w-full">
                                 <div class="flex flex-col">
@@ -233,7 +240,7 @@
                         <div data-addon="Online service" data-price="10" data-duration="yr"
                             class="add-on-type hidden yearly-extras flex items-center gap-8 p-4 border-slate-100 border-2 rounded-lg w-full">
                             <div class="checkbox-container">
-                                <input type="checkbox" name="online service" id="online" class="checkbox">
+                                <input type="checkbox" name="online service" id="yearly-online" class="checkbox">
                             </div>
                             <div class="flex justify-between w-full">
                                 <div class="flex flex-col">
@@ -249,7 +256,7 @@
                         <div data-addon="Larger storage" data-price="2" data-duration="mo"
                             class="add-on-type monthly-extras flex items-center gap-8 p-4 border-slate-100 border-2 rounded-lg w-full">
                             <div class="checkbox-container">
-                                <input type="checkbox" name="larger storage" id="storage" class="checkbox">
+                                <input type="checkbox" name="larger storage" id="monthly-storage" class="checkbox">
                             </div>
                             <div class="flex justify-between w-full">
                                 <div class="flex flex-col">
@@ -264,7 +271,7 @@
                         <div data-addon="Larger storage" data-price="20" data-duration="yr"
                             class="add-on-type hidden yearly-extras flex items-center gap-8 p-4 border-slate-100 border-2 rounded-lg w-full">
                             <div class="checkbox-container">
-                                <input type="checkbox" name="larger storage" id="storage" class="checkbox">
+                                <input type="checkbox" name="larger storage" id="yearly-storage" class="checkbox">
                             </div>
                             <div class="flex justify-between w-full">
                                 <div class="flex flex-col">
@@ -280,7 +287,7 @@
                         <div data-addon="Customizable profit" data-price="3" data-duration="mo"
                             class="add-on-type monthly-extras flex items-center gap-8 p-4 border-slate-100 border-2 rounded-lg w-full">
                             <div class="checkbox-container">
-                                <input type="checkbox" name="customizable profit" id="profit" class="checkbox">
+                                <input type="checkbox" name="customizable profit" id="monthly-profit" class="checkbox">
                             </div>
                             <div class="flex justify-between w-full">
                                 <div class="flex flex-col">
@@ -295,7 +302,7 @@
                         <div data-addon="Customizable profit" data-price="30" data-duration="yr"
                             class="add-on-type hidden yearly-extras flex items-center gap-8 p-4 border-slate-100 border-2 rounded-lg w-full">
                             <div class="checkbox-container">
-                                <input type="checkbox" name="customizable profit" id="profit" class="checkbox">
+                                <input type="checkbox" name="customizable profit" id="yearly-profit" class="checkbox">
                             </div>
                             <div class="flex justify-between w-full">
                                 <div class="flex flex-col">

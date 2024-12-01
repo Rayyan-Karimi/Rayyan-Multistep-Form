@@ -9,29 +9,75 @@ document.addEventListener("DOMContentLoaded", () => {
     let selectedPlan = {}
     let selectedAddOns = []
 
-    form1.addEventListener("submit", e => {
-        console.log("clicked submit button")
-        const name = document.querySelector("#name").value.trim()
-        const email = document.querySelector("#email").value.trim()
-        const phone = document.querySelector("#phone").value.trim()
-        if (!name || !email || !phone) {
-            return false;
+    form1.addEventListener("submit", (e) => {
+        console.log("clicked submit button");
+        e.preventDefault();
+
+        const name = document.querySelector("#name");
+        const email = document.querySelector("#email");
+        const phone = document.querySelector("#phone");
+
+        let isValid = true;
+
+        // Validate Name
+        if (!name.value.trim()) {
+            isValid = false;
+            name.classList.add('border-red-500', 'border');
+            document.querySelector('#name-error').classList.remove('hidden');
+        } else {
+            name.classList.remove('border-red-500', 'border');
+            document.querySelector('#name-error').classList.add('hidden');
         }
-        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-        const phonePattern = /^\+?[0-9]{1,4}[-\s]?[0-9]{1,15}$/;
-        // console.log('email check', emailPattern.test(email))
-        if (!emailPattern.test(email)) {
-            return false
+
+        // Validate Email (required field)
+        if (!email.value.trim()) {
+            isValid = false;
+            email.classList.add('border-red-500', 'border');
+            document.querySelector('#email-error').classList.remove('hidden');
+        } else {
+            email.classList.remove('border-red-500', 'border');
+            document.querySelector('#email-error').classList.add('hidden');
+            // Validate Email format
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if (!emailPattern.test(email.value)) {
+                isValid = false;
+                email.classList.add('border-red-500', 'border');
+                document.querySelector('#email-invalid').classList.remove('hidden');
+            } else {
+                email.classList.remove('border-red-500', 'border');
+                document.querySelector('#email-invalid').classList.add('hidden');
+            }
         }
-        // console.log('phone check', phonePattern.test(phone))
-        if (!phonePattern.test(phone)) {
-            return false
+
+        // Validate Phone (required field)
+        if (!phone.value.trim()) {
+            isValid = false;
+            phone.classList.add('border-red-500', 'border');
+            document.querySelector('#phone-error').classList.remove('hidden');
+        } else {
+            phone.classList.remove('border-red-500', 'border');
+            document.querySelector('#phone-error').classList.add('hidden');
+            // Validate Phone format
+            const phonePattern = /^\+?[0-9]{1,4}[-\s]?[0-9]{1,15}$/;
+            if (!phonePattern.test(phone.value)) {
+                isValid = false;
+                phone.classList.add('border-red-500', 'border');
+                document.querySelector('#phone-invalid').classList.remove('hidden');
+            } else {
+                phone.classList.remove('border-red-500', 'border');
+                document.querySelector('#phone-invalid').classList.add('hidden');
+            }
         }
+
         console.log("Form submitted, updating steps...", currentStep);
-        currentStep++
-        updateSteps()
+
+        if (isValid) {
+            currentStep++;
+            updateSteps();
+        }
+
         console.log("Form submitted, moving to next step...", currentStep);
-        return true
+        return false;
     })
 
     document.body.addEventListener("click", (event) => {
