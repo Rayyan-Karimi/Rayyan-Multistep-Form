@@ -1,3 +1,7 @@
+### ignore this file ###
+
+
+
 Create dist and src folders
 
 Create index.html in dist
